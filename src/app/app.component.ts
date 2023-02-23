@@ -7,4 +7,12 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'chatapp';
+
+  public showLoginView:boolean = true
+  hideLoginView(){
+    this.showLoginView=false
+  }
+
+
+
 }
