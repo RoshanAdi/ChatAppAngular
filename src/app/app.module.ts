@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { ScrollingModule } from '@angular/cdk/scrolling';
 import { AppComponent } from './app.component';
 import {ChatComponent} from "./chatMain/chat.component";
 import {FormsModule} from "@angular/forms";
@@ -9,6 +9,7 @@ import { PublicMsgsComponent } from './public-msgs/public-msgs.component';
 import { OnlineUserListComponent } from './online-user-list/online-user-list.component';
 import { TypingAreaComponent } from './typing-area/typing-area.component';
 
+
 @NgModule({
     declarations: [
         AppComponent,
@@ -16,11 +17,13 @@ import { TypingAreaComponent } from './typing-area/typing-area.component';
         LoginComponent,
         PublicMsgsComponent,
         OnlineUserListComponent,
-        TypingAreaComponent
+        TypingAreaComponent,
+
     ],
   imports: [
     BrowserModule,
-    FormsModule
+    FormsModule,
+    ScrollingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
