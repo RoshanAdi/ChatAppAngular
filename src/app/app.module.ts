@@ -25,7 +25,7 @@ import { TypingAreaComponent } from './typing-area/typing-area.component';
     FormsModule,
     ScrollingModule
   ],
-  providers: [],
+  providers: [LoginComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
