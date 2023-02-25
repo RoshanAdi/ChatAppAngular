@@ -1,0 +1,35 @@
+<!--
+<form (ngSubmit)="sendMessage(sendForm)" #sendForm="ngForm">
+  <div class="chat-send row">
+    <div class="col-2">
+      <input type="text" class="form-control" name="user" id="input-user" ngModel>
+    </div>
+    <div class="col-8">
+      <input type="text" class="form-control" name="message" id="input-message" ngModel>
+    </div>
+    <div class="col-2">
+      <button type="submit" class="btn btn-primary">Send</button>
+    </div>
+  </div>
+</form>
+-->
+
+
+
+<form (ngSubmit)="sendMessage(sendForm)" #sendForm="ngForm">
+<div class="container-fluid h-100">
+  <div class="row">
+
+
+
+    <label class="col-2">{{currentUser}}</label>
+
+          <textarea rows="3" class="col-8" placeholder="Type your message..." name="message" id="input-message" ngModel></textarea>
+
+            <button class="col-2" type="submit">Send</button>
+
+
+  </div>
+</div>
+</form>
+

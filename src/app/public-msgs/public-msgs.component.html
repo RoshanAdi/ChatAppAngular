@@ -1,0 +1,6 @@
+
+          <div class="list-group-item" *ngFor="let chatMessage of webSocketService.chatMessages">
+            <strong>{{chatMessage.user}}: </strong>
+            <span>{{chatMessage.message}}</span>
+          </div>
+
