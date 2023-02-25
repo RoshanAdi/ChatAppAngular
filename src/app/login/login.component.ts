@@ -23,7 +23,7 @@ export class LoginComponent {
     const loginDto = new LoginDto(LoginData.value.username);
     this.currentUser = loginDto.username
     this.webSocketService.sendLogins(loginDto);
-
+localStorage.setItem("username",loginDto.username)
     this.hideLoginView.emit()
     /*sendForm.controls.message.reset();*/
   }

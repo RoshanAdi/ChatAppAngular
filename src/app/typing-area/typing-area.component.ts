@@ -10,15 +10,17 @@ import {LoginComponent} from "../login/login.component";
   styleUrls: ['./typing-area.component.css']
 })
 export class TypingAreaComponent {
-
+private userId:any
+  public username:any
 public currentUser:String | undefined
   constructor(public webSocketService: WebSocketService) {
 
-
+this.userId = localStorage.getItem("userId")
+    this.username = localStorage.getItem("username")
   }
 
   sendMessage(sendForm: NgForm) {
-    const chatMessageDto = new ChatMessageDto(sendForm.value.user, sendForm.value.message,"","");
+    const chatMessageDto = new ChatMessageDto(this.username, sendForm.value.message,this.userId,"");
     this.webSocketService.sendMessage(chatMessageDto);
 
     /*sendForm.controls.message.reset();*/

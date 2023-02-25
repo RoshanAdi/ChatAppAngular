@@ -55,6 +55,7 @@ alert((event.data))
   }
 public setUserKey(key:string){
     localStorage.setItem("userId",key)
+  sessionStorage.setItem("userId",key)
   console.warn(localStorage.getItem("userId"))
 }
 
