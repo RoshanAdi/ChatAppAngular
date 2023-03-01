@@ -20,7 +20,13 @@ export class ChatComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     this.webSocketService.closeWebSocket();
   }
+  receiver: any;
+  receiverId:any
 
+  updateReceiver(newValue: any) {
+    this.receiver = newValue;}
+  updateReceiverId(newValue: any) {
+    this.receiverId = newValue;}
 
 
 }

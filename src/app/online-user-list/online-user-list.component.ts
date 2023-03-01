@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
+import {WebSocketService} from "../services/web-socket.service";
 
 @Component({
   selector: 'app-online-user-list',
@@ -7,5 +8,21 @@ import { Component } from '@angular/core';
 
 })
 export class OnlineUserListComponent {
-  items = [34,24,424,4,24,5,25,5]
+
+  @Input() receiver: any;
+  @Output() receiverUpdated = new EventEmitter<any>();
+  @Input() receiverId: any;
+  @Output() receiverIdUpdated = new EventEmitter<any>();
+  constructor(public webSocketService: WebSocketService) {
+  }
+  selectRecipient(recipientId:any,newValue:any){
+    console.warn(recipientId)
+
+    this.receiver = newValue
+    this.receiverUpdated.emit(this.receiver);
+    this.receiverId = recipientId
+    this.receiverIdUpdated.emit(this.receiverId);
+  }
+
+
 }

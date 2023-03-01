@@ -9,7 +9,7 @@ import {LoginDto} from "../models/loginDto";
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit{
   @Output() hideLoginView: EventEmitter<void> = new EventEmitter<void>();
   public currentUser:String | undefined
 
@@ -26,6 +26,10 @@ export class LoginComponent {
 localStorage.setItem("username",loginDto.username)
     this.hideLoginView.emit()
     /*sendForm.controls.message.reset();*/
+  }
+
+  ngOnInit(): void {
+
   }
 
 

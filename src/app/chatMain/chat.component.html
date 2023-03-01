@@ -10,12 +10,12 @@
 
     <div class="col-3 p-2 bg-light border" style="height: 88vh">
       <cdk-virtual-scroll-viewport class="example-viewport" itemSize="10000" >
-        <div><app-online-user-list></app-online-user-list></div>
+        <div><app-online-user-list [receiver]="receiver"  (receiverUpdated)="updateReceiver($event)" [receiverId]="receiverId" (receiverIdUpdated)="updateReceiverId($event)" ></app-online-user-list></div>
       </cdk-virtual-scroll-viewport>
       </div>
 
   </div>
 </div>
-<div class="col-12 p-2 bg-light border" style="height: 12vh; "><app-typing-area></app-typing-area></div>
+<div class="col-12 p-2 bg-light border" style="height: 12vh; "><app-typing-area [receiver]="receiver"  (receiverUpdated)="updateReceiver($event)" [receiverId]="receiverId" (receiverIdUpdated)="updateReceiverId($event)"></app-typing-area></div>
 
 

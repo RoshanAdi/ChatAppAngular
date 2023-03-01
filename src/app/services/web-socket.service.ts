@@ -2,41 +2,73 @@ import { Injectable } from '@angular/core';
 import { ChatMessageDto } from '../models/chatMessageDto';
 import {LoginDto} from "../models/loginDto";
 import {error} from "@angular/compiler-cli/src/transformers/util";
+import {UserListDto} from "../models/userListDto";
+
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class WebSocketService {
-private userId :String = "blank"
+
 
   webSocket = new WebSocket('ws://localhost:8080/chat');
   chatMessages: ChatMessageDto[] = [];
 
-  constructor() {localStorage.setItem("fw","fw") }
+  public map = new Map();
+public senderIdd:any
+
+  constructor() {}
 
   public chatWebSocket(){
 
     this.webSocket.onopen = (event) => {
       console.log('Open: ', event);
-
+      localStorage.clear()
     };
 
     this.webSocket.onmessage = (event) => {
-      const chatMessageDto = JSON.parse(event.data);
-      if (chatMessageDto.username){                          //checks for first time default joined msg
-        this.chatMessages.push({recieverId: "", senderId: "", user:chatMessageDto.username,message:" Joined!"})
+      console.log(event.data)
+
+if (!JSON.parse(JSON.stringify(event.data)).user){
+  console.log("hu")}
+      if(!JSON.parse(event.data).user){                       //online user list update. receiving a stringfied json. cleanup and adding to a map
+        this.map.clear()
+        let string1 = JSON.stringify(JSON.parse(event.data))
+
+        let list: any[] = [];
+    list= string1.split(",")
+        for (let i of list){
+let list2:any[]=[]
+          list2= i.split(":")
+          var counter=0
+          let dto
+          let p
+for (let j of list2){
+ var k = j.toString().replaceAll("{","").replaceAll("}","")
+if(counter==0){p = k ;counter=counter+1}
+else {this.map.set(JSON.parse(k),JSON.parse(p))}
+         }
+        }
       }
-      if (JSON.parse(event.data).Id){                                    //checks for first time forwarded userId
-        this.setUserKey(JSON.parse(event.data).message)
+      else {
+        const chatMessageDto = JSON.parse(event.data);  //group chat
+        this.senderIdd = chatMessageDto.senderId
+        this.chatMessages.push(chatMessageDto);
+
       }
-      else {this.chatMessages.push(chatMessageDto);}         //usual chat msgs
-alert((event.data))
+
+
+
+        console.warn(event.data)
+
 
     };
 
     this.webSocket.onclose = (event) => {
       console.log('Close: ', event);
       location.reload()
+      localStorage.clear()
     };
   }
 
@@ -49,15 +81,11 @@ alert((event.data))
 
   public sendLogins(loginDto:LoginDto){
 
-    this.webSocket.send(JSON.stringify(new ChatMessageDto(loginDto.username," Joined","blank","blank")))
+    this.webSocket.send(JSON.stringify(new ChatMessageDto(loginDto.username," Joined","l4231rfd2384if9","blank")))
     localStorage.setItem("user",loginDto.username)
 
   }
-public setUserKey(key:string){
-    localStorage.setItem("userId",key)
-  sessionStorage.setItem("userId",key)
-  console.warn(localStorage.getItem("userId"))
-}
+
 
 
 
