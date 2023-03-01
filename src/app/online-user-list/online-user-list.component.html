@@ -1,9 +1,9 @@
 
-<div class="container-fluid h-100">
+<div class=" h-100">
 
 
 <div class="list-group-item" *ngFor="let user of webSocketService.map | keyvalue">
-  <p (click)="selectRecipient(user.value,user.key)">{{user.key}} </p>
+  <div class="btn btn-outline-secondary col-12" (click)="selectRecipient(user.key,user.value)">{{user.value}} </div>
 
 </div>
 </div>

@@ -30,8 +30,7 @@ public senderIdd:any
     this.webSocket.onmessage = (event) => {
       console.log(event.data)
 
-if (!JSON.parse(JSON.stringify(event.data)).user){
-  console.log("hu")}
+
       if(!JSON.parse(event.data).user){                       //online user list update. receiving a stringfied json. cleanup and adding to a map
         this.map.clear()
         let string1 = JSON.stringify(JSON.parse(event.data))
@@ -47,7 +46,7 @@ let list2:any[]=[]
 for (let j of list2){
  var k = j.toString().replaceAll("{","").replaceAll("}","")
 if(counter==0){p = k ;counter=counter+1}
-else {this.map.set(JSON.parse(k),JSON.parse(p))}
+else {this.map.set(JSON.parse(p),JSON.parse(k))}
          }
         }
       }
@@ -81,7 +80,7 @@ else {this.map.set(JSON.parse(k),JSON.parse(p))}
 
   public sendLogins(loginDto:LoginDto){
 
-    this.webSocket.send(JSON.stringify(new ChatMessageDto(loginDto.username," Joined","l4231rfd2384if9","blank")))
+    this.webSocket.send(JSON.stringify(new ChatMessageDto(loginDto.username," Joined","l4231rfd2384if9","")))
     localStorage.setItem("user",loginDto.username)
 
   }
