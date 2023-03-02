@@ -22,11 +22,13 @@ export class ChatComponent implements OnInit, OnDestroy {
   }
   receiver: any;
   receiverId:any
-
+  username = localStorage.getItem("username")
   updateReceiver(newValue: any) {
     this.receiver = newValue;}
   updateReceiverId(newValue: any) {
     this.receiverId = newValue;}
 
-
+logout(){
+    location.reload()
+}
 }

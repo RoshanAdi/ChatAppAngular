@@ -1,9 +1,11 @@
 
 <div class=" h-100">
 
-
-<div class="list-group-item" *ngFor="let user of webSocketService.map | keyvalue">
-  <div class="btn btn-outline-secondary col-12" (click)="selectRecipient(user.key,user.value)">{{user.value}} </div>
-
-</div>
+  <table class="table table-hover">
+    <tbody>
+    <tr *ngFor="let user of webSocketService.map | keyvalue">
+      <td   (click)="selectRecipient(user.key,user.value)">{{user.value}}</td>
+    </tr>
+    </tbody>
+  </table>
 </div>

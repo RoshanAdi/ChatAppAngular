@@ -1,21 +1,27 @@
-
-
+<div class="form-group shadow-textarea ">
+<nav style="background-color: #D0D3D4 ; " class="navbar navbar-light" >
+  <a class="navbar-brand" style="padding-left: 40px">ichat</a>
+  <form class="form-inline">
+    <span class="navbar-text"  style="padding-right: 20px;color: black">{{username}}</span>
+    <button  class="btn btn-outline-dark" (click)="logout()"  type="button">Sign-out</button>
+    <span style="padding-right: 10px"></span>
+  </form>
+</nav>
+</div>
 <div class="container-fluid">
   <div class="row">
-  <div class="col-9 p-2 bg-light border" style="height: 88vh">
+  <div class="col-9 p-2 bg-light border" style="height: 81vh">
     <cdk-virtual-scroll-viewport class="example-viewport" itemSize="10000" >
       <div><app-public-msgs></app-public-msgs></div>
     </cdk-virtual-scroll-viewport>
     </div>
-
-    <div class="col-3 p-2 bg-light border" style="height: 88vh">
+    <div class="col-3 p-2 bg-light border" style="height: 81vh">
       <cdk-virtual-scroll-viewport class="example-viewport" itemSize="10000" >
         <div><app-online-user-list [receiver]="receiver"  (receiverUpdated)="updateReceiver($event)" [receiverId]="receiverId" (receiverIdUpdated)="updateReceiverId($event)" ></app-online-user-list></div>
       </cdk-virtual-scroll-viewport>
       </div>
-
   </div>
 </div>
-<div class="col-12 p-2 bg-light border" style="height: 12vh; "><app-typing-area [receiver]="receiver"  (receiverUpdated)="updateReceiver($event)" [receiverId]="receiverId" (receiverIdUpdated)="updateReceiverId($event)"></app-typing-area></div>
+<div class="col-12 p-2 " style="height: 12vh; "><app-typing-area [receiver]="receiver"  (receiverUpdated)="updateReceiver($event)" [receiverId]="receiverId" (receiverIdUpdated)="updateReceiverId($event)"></app-typing-area></div>
 
 

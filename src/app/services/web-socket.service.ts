@@ -28,9 +28,6 @@ public senderIdd:any
     };
 
     this.webSocket.onmessage = (event) => {
-      console.log(event.data)
-
-
       if(!JSON.parse(event.data).user){                       //online user list update. receiving a stringfied json. cleanup and adding to a map
         this.map.clear()
         let string1 = JSON.stringify(JSON.parse(event.data))
@@ -56,12 +53,6 @@ else {this.map.set(JSON.parse(p),JSON.parse(k))}
         this.chatMessages.push(chatMessageDto);
 
       }
-
-
-
-        console.warn(event.data)
-
-
     };
 
     this.webSocket.onclose = (event) => {

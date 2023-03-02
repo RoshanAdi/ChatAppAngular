@@ -40,25 +40,28 @@ export class TypingAreaComponent implements AfterViewInit{
     }
 
 
-
-
-
   sendMessage(sendForm: NgForm) {
     const chatMessageDto = new ChatMessageDto(this.username, sendForm.value.message,this.webSocketService.senderIdd,sendForm.value.recieverId);
     this.webSocketService.sendMessage(chatMessageDto);
     sendForm.controls['message'].reset();
-
   }
-
  removeRecipient(){
     this.receiver="Public"
     this.receiverId=""
     this.receiverIdUpdated.emit("")
     this.receiverUpdated.emit(this.receiver);
   }
+  @ViewChild('mySubmitButton') mySubmitButton : any
+  sendButtonClick(sendForm: NgForm){
+    if(sendForm.value.message){   let el: HTMLElement = this.mySubmitButton.nativeElement as HTMLElement;
+      setTimeout(()=> el.click());
+    }
 
+  }
 
-
+  onKeydown(event:any){
+    event.preventDefault();
+  }
 
 
 }

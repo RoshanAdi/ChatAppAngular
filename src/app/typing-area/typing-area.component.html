@@ -1,40 +1,14 @@
-<!--
-<form (ngSubmit)="sendMessage(sendForm)" #sendForm="ngForm">
-  <div class="chat-send row">
-    <div class="col-2">
-      <input type="text" class="form-control" name="user" id="input-user" ngModel>
-    </div>
-    <div class="col-8">
-      <input type="text" class="form-control" name="message" id="input-message" ngModel>
-    </div>
-    <div class="col-2">
-      <button type="submit" class="btn btn-primary">Send</button>
-    </div>
-  </div>
-</form>
--->
 
-
-
-<form (keydown.enter)="sendMessage(sendForm)" (ngSubmit)="sendMessage(sendForm)" #sendForm="ngForm" ngNativeValidate>
+<form (keydown.enter)="onKeydown($event);sendButtonClick(sendForm)"  (ngSubmit)="sendMessage(sendForm)"  #sendForm="ngForm" ngNativeValidate>
 <div class="container-fluid h-100">
   <div class="row">
-
-
-
-
     <button class="col-2 btn btn-outline-secondary " #myButton type="button" (click)="removeRecipient()">{{ receiver | contentLimitter }}</button>
     <div class="form-group shadow-textarea col-8">
-          <textarea rows="3"  class="form-control z-depth-1 " placeholder="Type your message..." name="message" id="input-message" [maxlength]="400" ngModel required></textarea>
+          <textarea oninvalid="this.setCustomValidity('Type something!')"
+                    oninput="setCustomValidity('')" rows="3"  class="form-control z-depth-1 " placeholder="Type your message..." name="message" id="input-message" [minlength]="1" [maxlength]="400" ngModel required></textarea>
    <input hidden="hidden" type="text" name="recieverId"  [value]="receiverId" [ngModel]="receiverId">
-    </div>
-
-
-
-            <button class="col-2 btn btn-outline-secondary" type="submit">Send</button>
-
+    </div><button class="col-2 btn btn-outline-secondary" #mySubmitButton type="submit">Send</button>
 
   </div>
 </div>
 </form>
-
