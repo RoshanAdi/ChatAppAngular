@@ -6,6 +6,6 @@
     <tr *ngFor="let user of webSocketService.map | keyvalue">
       <td   (click)="selectRecipient(user.key,user.value)">{{user.value}}</td>
     </tr>
-    </tbody>
+    </tbody >
   </table>
 </div>

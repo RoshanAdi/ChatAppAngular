@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable, Input} from '@angular/core';
 import { ChatMessageDto } from '../models/chatMessageDto';
 import {LoginDto} from "../models/loginDto";
 import {error} from "@angular/compiler-cli/src/transformers/util";

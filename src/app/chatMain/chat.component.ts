@@ -1,7 +1,16 @@
-import {Component, OnInit, OnDestroy, ChangeDetectionStrategy} from '@angular/core';
+import {
+  Component,
+  OnInit,
+  OnDestroy,
+  ChangeDetectionStrategy,
+  ViewChild,
+  OnChanges,
+  SimpleChanges
+} from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { WebSocketService } from '../services/web-socket.service';
 import { ChatMessageDto } from '../models/chatMessageDto';
+import {CdkVirtualScrollViewport} from "@angular/cdk/scrolling";
 
 @Component({
   selector: 'cf-chat',
@@ -30,5 +39,13 @@ export class ChatComponent implements OnInit, OnDestroy {
 
 logout(){
     location.reload()
+
 }
+  @ViewChild(CdkVirtualScrollViewport) viewPort: any;
+
+  autoScroll(){
+    this.viewPort.scrollToIndex(9999, "smooth");
+  }
+
+
 }

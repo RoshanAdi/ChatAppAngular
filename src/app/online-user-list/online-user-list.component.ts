@@ -10,6 +10,7 @@ import {WebSocketService} from "../services/web-socket.service";
 export class OnlineUserListComponent {
 
   @Input() receiver: any;
+
   @Output() receiverUpdated = new EventEmitter<any>();
   @Input() receiverId: any;
   @Output() receiverIdUpdated = new EventEmitter<any>();
