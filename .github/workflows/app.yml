@@ -23,6 +23,11 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
         
+      - name: Start Docker daemon
+        run: |
+          open /Applications/Docker.app
+          while ! docker info &>/dev/null ; do sleep 1; done
+        
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v2
       
