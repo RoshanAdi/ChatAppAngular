@@ -28,8 +28,8 @@ jobs:
       - name: Build
         run: npm run build --prod
         
-      - name: Install k6 by homebrew
-        run: brew install 
+      - name: Install  homebrew
+        run: brew install --cask docker
         
 
    #   - name: Set up QEMU
