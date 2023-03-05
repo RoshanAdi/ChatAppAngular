@@ -16,6 +16,11 @@ jobs:
       packages: write
     steps:
       # Checks-out your repository u job can access it
+      - name: Install  homebrew
+        run: brew install --cask docker
+        
+      - name: run docker
+        run: systemctl start docker
 
       - name: Checkout
         uses: actions/checkout@v2
@@ -28,8 +33,7 @@ jobs:
       - name: Build
         run: npm run build --prod
         
-      - name: Install  homebrew
-        run: brew install --cask docker
+
         
 
    #   - name: Set up QEMU
