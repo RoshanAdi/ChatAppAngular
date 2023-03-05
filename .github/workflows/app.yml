@@ -25,7 +25,7 @@ jobs:
         
       - name: Start Docker daemon
         run: |
-          open /Applications/Docker.app
+          nohup dockerd --experimental &>/dev/null &
           while ! docker info &>/dev/null ; do sleep 1; done
         
       - name: Set up Docker Buildx
