@@ -26,14 +26,27 @@ jobs:
 
       - name: Checkout
         uses: actions/checkout@v2
-      - name: Use Node 18.13.0
-        uses: actions/setup-node@v18
+      - name: Use Node latest
+        uses: actions/setup-node@v1
         with:
-          node-version: '18.13.0'
+          node-version: latest
       - name: Install dependencies
         run: npm ci
       - name: Build
         run: npm run build:ci
+        
+      - name: Archive build
+        if: success()
+        uses: actions/upload-artifact@v1
+        with:
+          name: deploy_dist
+          path: dist
+      - name: Archive code coverage result
+        if: success()
+        uses: actions/upload-artifact@v1
+        with:
+          name: deploy_coverage
+          path: coverage
         
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v2
