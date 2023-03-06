@@ -15,23 +15,10 @@ jobs:
       contents: read
       packages: write
     steps:
-      # Checks-out your repository u job can access it
-     # - name: Install  homebrew
-      #  run: brew install --cask docker
 
 
       - name: Checkout
         uses: actions/checkout@v2
-        
-      - name: Start Docker daemon
-        run: |
-         nohup dockerd > /dev/null 2>&1 &
-         sleep 15
-        
-     # - name: Start Docker daemon
-      #  run: |
-       #   nohup dockerd --experimental &>/dev/null &
-        #  while ! docker info &>/dev/null ; do sleep 1; done
         
 
         
@@ -47,11 +34,11 @@ jobs:
 
         
 
-      #- name: Set up QEMU
-       # uses: docker/setup-qemu-action@v2
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v2
       
-     # - name: Set up Docker Buildx
-      #  uses: docker/setup-buildx-action@v2
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v2
       
       
     
@@ -67,4 +54,4 @@ jobs:
         with:
           context: .
           push: true
-          tags: roshanadi/chatapp:mac
+          tags: roshanadi/chatapp:latest
