@@ -9,32 +9,16 @@ on:
 jobs:
   build:
 
-    runs-on: macos-latest
+    runs-on: ubuntu-latest
 
     permissions:
       contents: read
       packages: write
     steps:
       # Checks-out your repository u job can access it
-     # - name: Install  homebrew
-      #  run: brew install --cask docker
-
 
       - name: Checkout
         uses: actions/checkout@v2
-        
-      - name: Start Docker daemon
-        run: |
-         nohup dockerd > /dev/null 2>&1 &
-         sleep 15
-        
-     # - name: Start Docker daemon
-      #  run: |
-       #   nohup dockerd --experimental &>/dev/null &
-        #  while ! docker info &>/dev/null ; do sleep 1; done
-        
-
-        
       - name: Use Node 18.13.0
         uses: actions/setup-node@v1
         with:
@@ -45,17 +29,12 @@ jobs:
         run: npm run build --prod
         
 
-        
-
-      #- name: Set up QEMU
-       # uses: docker/setup-qemu-action@v2
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v2
       
-     # - name: Set up Docker Buildx
-      #  uses: docker/setup-buildx-action@v2
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v2
       
-      
-    
-        
       - name: Login to Docker Hub
         uses: docker/login-action@v2
         with:
@@ -67,4 +46,4 @@ jobs:
         with:
           context: .
           push: true
-          tags: roshanadi/chatapp:lates
+          tags: roshanadi/chatapp:v2
