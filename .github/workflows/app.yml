@@ -23,6 +23,11 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
         
+      - name: Start Docker daemon
+        run: |
+         nohup dockerd > /dev/null 2>&1 &
+         sleep 15
+        
      # - name: Start Docker daemon
       #  run: |
        #   nohup dockerd --experimental &>/dev/null &
@@ -48,10 +53,7 @@ jobs:
      # - name: Set up Docker Buildx
       #  uses: docker/setup-buildx-action@v2
       
-      - name: Start Docker daemon
-        run: |
-         nohup dockerd > /dev/null 2>&1 &
-         timeout 15 sh -c 'until docker info >/dev/null 2>&1; do sleep 1; done'
+      
     
         
       - name: Login to Docker Hub
