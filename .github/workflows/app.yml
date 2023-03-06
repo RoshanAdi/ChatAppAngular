@@ -50,11 +50,9 @@ jobs:
       
       - name: Start Docker daemon
         run: |
-         open --background -a Docker
-         while ! docker info > /dev/null 2>&1; do
-          echo "Waiting for Docker to start..."
-          sleep 1
-         done
+         nohup dockerd > /dev/null 2>&1 &
+         timeout 15 sh -c 'until docker info >/dev/null 2>&1; do sleep 1; done'
+    
         
       - name: Login to Docker Hub
         uses: docker/login-action@v2
