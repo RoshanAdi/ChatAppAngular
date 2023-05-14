@@ -12,7 +12,10 @@ import {UserListDto} from "../models/userListDto";
 export class WebSocketService {
 
 
+  //webSocket = new WebSocket('ws://13.232.193.28:8080/chat');
   webSocket = new WebSocket('ws://localhost:8080/chat');
+
+
   chatMessages: ChatMessageDto[] = [];
 
   public map = new Map();

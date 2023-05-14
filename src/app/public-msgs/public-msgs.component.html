@@ -1,11 +1,12 @@
 
 
 
-          <div class="list-group-item" *ngFor="let chatMessage of webSocketService.chatMessages">
+          <div class="list-group-item" *ngFor="let chatMessage of webSocketService.chatMessages" >
             <span>{{chatMessage.user}}: </span>
             <span *ngIf="((chatMessage.user==username)&&(chatMessage.recieverId!=nullReceiver)) "  >➡️{{webSocketService.map.get(chatMessage.recieverId)}} :</span>
             <strong *ngIf="(chatMessage.recieverId)&&((chatMessage.user!=username))" >(Private) : </strong>
-            <span >{{chatMessage.message}}{{hi()}}</span>
+            <span >{{chatMessage.message}}{{autoScrollMe()}}</span>
 
           </div>
+
 

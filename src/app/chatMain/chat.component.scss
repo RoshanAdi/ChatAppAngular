@@ -3,7 +3,21 @@
   width: 100%;
 
 }
+.example-viewport2 {
+  height: 81vh;
+  width: 72%;
+position: absolute;
 
+}
+.example-viewport3 {
+  height: 100%;
+  width: 80%;
+  opacity: 0.9;
+  background: white;
+  margin-left: auto;
+  position: relative;
+
+}
 .example-item {
   height: 50px;
 }
@@ -14,3 +28,4 @@
 .shadow-textarea textarea.form-control {
   padding-left: 0.8rem;
 }
+

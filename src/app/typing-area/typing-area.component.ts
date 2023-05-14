@@ -25,9 +25,9 @@ export class TypingAreaComponent implements AfterViewInit{
 
   public username:any
   @Input() receiver: any = "Public" ;
-  @Output() receiverUpdated = new EventEmitter<any>();
+  @Output() receiverUpdated = new EventEmitter<any>(); //for removing previous username when pressed public chat button.
   @Input() receiverId: any  ;
-  @Output() receiverIdUpdated = new EventEmitter<any>();
+  @Output() receiverIdUpdated = new EventEmitter<any>(); //for removing previous user id when pressed public chat button.
   constructor(public webSocketService: WebSocketService) {
 
 

@@ -9,6 +9,7 @@ import { PublicMsgsComponent } from './public-msgs/public-msgs.component';
 import { OnlineUserListComponent } from './online-user-list/online-user-list.component';
 import { TypingAreaComponent } from './typing-area/typing-area.component';
 import {ContentLimitterPipe} from "./Pipe/content-limitter.pipe";
+import { PrivateChatWindowComponent } from './private-chat-window/private-chat-window.component';
 
 
 @NgModule({
@@ -20,6 +21,7 @@ import {ContentLimitterPipe} from "./Pipe/content-limitter.pipe";
         OnlineUserListComponent,
         TypingAreaComponent,
         ContentLimitterPipe,
+        PrivateChatWindowComponent,
 
     ],
   imports: [

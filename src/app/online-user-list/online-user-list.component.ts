@@ -14,6 +14,7 @@ export class OnlineUserListComponent {
   @Output() receiverUpdated = new EventEmitter<any>();
   @Input() receiverId: any;
   @Output() receiverIdUpdated = new EventEmitter<any>();
+
   constructor(public webSocketService: WebSocketService) {
   }
   selectRecipient(recipientId:any,newValue:any){
@@ -23,6 +24,8 @@ export class OnlineUserListComponent {
     this.receiverUpdated.emit(this.receiver);
     this.receiverId = recipientId
     this.receiverIdUpdated.emit(this.receiverId);
+
+
   }
 
 

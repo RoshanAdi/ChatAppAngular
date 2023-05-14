@@ -11,18 +11,24 @@
 
 <div class="container-fluid">
   <div class="row">
-  <div class="col-9 p-2 bg-light border" style="height: 81vh">
-    <cdk-virtual-scroll-viewport class="example-viewport"  itemSize="10000" >
-      <div ><app-public-msgs (autoScroll)="autoScroll()"></app-public-msgs></div>
+  <div class="col-9 p-2 bg-light border" style="height: 81vh;">
+    <cdk-virtual-scroll-viewport class="example-viewport2"  itemSize="10000"  >
+      <div ><app-public-msgs (autoScroll)="autoScroll()"  ></app-public-msgs></div>
     </cdk-virtual-scroll-viewport>
+
+    <cdk-virtual-scroll-viewport class="example-viewport3"  itemSize="1000"  >
+      <div  ><app-private-chat-window (autoScroll3)="autoScroll3()"  ></app-private-chat-window></div>
+    </cdk-virtual-scroll-viewport>
+
     </div>
-    <div class="col-3 p-2 bg-light border" style="height: 81vh">
+
+    <div class="col-3 p-2 bg-light border" style="height: 81vh;">
       <cdk-virtual-scroll-viewport class="example-viewport" itemSize="10000" >
-        <div><app-online-user-list [receiver]="receiver"  (receiverUpdated)="updateReceiver($event)" [receiverId]="receiverId" (receiverIdUpdated)="updateReceiverId($event)" ></app-online-user-list></div>
+        <div><app-online-user-list [receiver]="receiverr"  (receiverUpdated)="updateReceiver($event)" [receiverId]="receiverIdd" (receiverIdUpdated)="updateReceiverId($event)"  ></app-online-user-list></div>
       </cdk-virtual-scroll-viewport>
       </div>
+
   </div>
 </div>
-<div class="col-12 p-2 " style="height: 12vh; "><app-typing-area [receiver]="receiver"  (receiverUpdated)="updateReceiver($event)" [receiverId]="receiverId" (receiverIdUpdated)="updateReceiverId($event)"></app-typing-area></div>
-
+<div class="col-12 p-2 " style="height: 12vh; "><app-typing-area [receiver]="receiverr"  (receiverUpdated)="updateReceiver($event)" [receiverId]="receiverIdd" (receiverIdUpdated)="updateReceiverId($event)"></app-typing-area></div>
 

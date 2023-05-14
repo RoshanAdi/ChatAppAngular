@@ -10,12 +10,15 @@ import {CdkVirtualScrollViewport} from "@angular/cdk/scrolling";
 export class PublicMsgsComponent {
 
   @Output() autoScroll: EventEmitter<void> = new EventEmitter<void>();
+  @Output() autoScroll3: EventEmitter<void> = new EventEmitter<void>();
   username = localStorage.getItem("username")
   public  nullReceiver:string = ""
   constructor(public webSocketService: WebSocketService) {
   }
-hi(){
+autoScrollMe(){
 
   this.autoScroll.emit()
+  this.autoScroll3.emit()
+
 }
 }

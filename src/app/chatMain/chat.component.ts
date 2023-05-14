@@ -5,7 +5,7 @@ import {
   ChangeDetectionStrategy,
   ViewChild,
   OnChanges,
-  SimpleChanges
+  SimpleChanges, Input, ElementRef
 } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { WebSocketService } from '../services/web-socket.service';
@@ -20,31 +20,42 @@ import {CdkVirtualScrollViewport} from "@angular/cdk/scrolling";
 })
 export class ChatComponent implements OnInit, OnDestroy {
 
+
   constructor(public webSocketService: WebSocketService) { }
 
   ngOnInit(): void {
     this.webSocketService.chatWebSocket();
+
   }
 
   ngOnDestroy(): void {
     this.webSocketService.closeWebSocket();
   }
-  receiver: any;
-  receiverId:any
+  receiverr: any; //intermediate parameter for name
+  receiverIdd:any  //intermediate parameter for id
   username = localStorage.getItem("username")
+
   updateReceiver(newValue: any) {
-    this.receiver = newValue;}
+    this.receiverr = newValue;}
   updateReceiverId(newValue: any) {
-    this.receiverId = newValue;}
+    this.receiverIdd = newValue;
+
+  }
 
 logout(){
     location.reload()
 
 }
   @ViewChild(CdkVirtualScrollViewport) viewPort: any;
+  @ViewChild(CdkVirtualScrollViewport) viewPort3: any;
+
 
   autoScroll(){
     this.viewPort.scrollToIndex(9999, "smooth");
+  }
+  autoScroll3(){
+
+    this.viewPort3.scrollToIndex(999, "smooth");
   }
 
 
